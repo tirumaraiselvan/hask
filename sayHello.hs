@@ -110,9 +110,9 @@ zipWith' _ [] _ = []
 zipWith' _ _ [] = []
 zipWith' f (x:xs) (y:ys) = f x y: zipWith' f xs ys
 
-flip' :: (a -> b -> c) -> (b -> a -> c)
-flip' f = g
-  where g x y = f y x
+--flip' :: (a -> b -> c) -> (b -> a -> c)
+--flip' f = g
+--  where g x y = f y x
 
 squares = map (map (^2) ) [[1,2], [4,5]]
 
@@ -139,5 +139,8 @@ isCollatzLong n =
 
 longCollatz = filter isCollatzLong [1..100]
 
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f = \x y -> f y x
 
-
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
