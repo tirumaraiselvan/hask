@@ -55,3 +55,15 @@ lockerLookup lockNum lockMap =
 
 
 lockers = Map.fromList [(100,(Taken,"ZD39I")), (101,(Free,"JAH3I")), (103,(Free,"IQSA9")), (105,(Free,"QOTSA")), (109,(Taken,"893JJ")), (110,(Taken,"99292")) ]
+
+data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)
+
+treeInsert :: (Ord a) => a -> Tree a -> Tree a
+treeInsert x (EmptyTree) = Node x EmptyTree EmptyTree
+treeInsert x (Node root left right)
+    | x == root = Node root left right
+    | x >  root = Node root left (treeInsert x right)
+    | x <  root = Node root (treeInsert x left) right
+
+nums = [1,5,6,2,3,4]
+numsTree = foldr treeInsert EmptyTree nums
