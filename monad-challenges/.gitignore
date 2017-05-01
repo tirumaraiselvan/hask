@@ -1,0 +1,9 @@
+dist
+*.hi
+*.o
+solutions
+*.swp
+_site
+_cache
+hakyll/site
+src/Set[1-5].hs
